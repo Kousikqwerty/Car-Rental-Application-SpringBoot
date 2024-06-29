@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+<link rel="stylesheet" href="adashboard.css">
+</head>
+<body>
+<h1>Welcome to the Admin Dashboard</h1>
+
+<div class="container">
+    <a href="/AddCars" class="button">Add Cars</a>
+    <a href="/UpdateCars" class="button">Update Cars</a>
+    <a href="/DeleteCars" class="button">Delete Cars</a>
+    
+    <!-- Placeholder for displaying car rentals -->
+    <div th:if="${viewType == 'table'}">
+        <h2>Car Rental Details</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Car Model</th>
+                        <th>From City</th>
+                        <th>To City</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Price Per Day</th>
+                        <th colspan="2">Actions</th> <!-- Colspan for buttons -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="carItem : ${carList}">
+                        <td th:text="${carItem.CarModel}"></td>
+                        <td th:text="${carItem.FromCity}"></td>
+                        <td th:text="${carItem.ToCity}"></td>
+                        <td th:text="${#dates.format(carItem.StartDate, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${#dates.format(carItem.EndDate, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${carItem.PricePerDay}"></td>
+                        <td>
+                            <button type="submit" name="selectedRowbutton1" th:value="${carItem.CarModel}" th:text="Book">Book Rental</button>
+                        </td>
+                        <td>
+                            <button type="submit" name="selectedRowbutton2" th:value="${carItem.CarModel}" th:text="ViewDetails">View Details</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

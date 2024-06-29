@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Details</title>
+    <link rel="stylesheet" href="vflight.css">
+</head>
+<body>
+    <h1>Car Rental Details</h1>
+    <div class="container">
+        <div class="card">
+            <form id="selectionForm" method="post" action="/bookCarRental">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Car Model</th>
+                            <th>From City</th>
+                            <th>To City</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Price Per Day</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="carItem : ${carList}">
+                            <td th:text="${carItem.CarModel}"></td>
+                            <td th:text="${carItem.FromCity}"></td>
+                            <td th:text="${carItem.ToCity}"></td>
+                            <td th:text="${carItem.StartDate}"></td>
+                            <td th:text="${carItem.EndDate}"></td>
+                            <td th:text="${carItem.PricePerDay}"></td>
+                            <td>
+                                <button type="submit" name="selectedRowbutton1" th:value="${carItem}" th:text="Book">Book Rental</button>
+                                <button type="submit" name="selectedRowbutton2" th:value="${carItem}" th:text="ViewDetails">View Details</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

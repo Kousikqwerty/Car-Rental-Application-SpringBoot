@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+        <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <h1>Welcome to the Car Rental Dashboard</h1>
+
+    <a href="/viewRentals?viewType=table" class="button">View Rentals</a>
+
+    <div th:if="${viewType == 'table'}">
+        <h2>Car Rental Details</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Car Model</th>
+                <th>Car Number</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Price Per Day</th>
+                <th colspan="2">Actions</th> <!-- Colspan for buttons -->
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="rentalItem : ${rentalList}">
+                <td th:text="${rentalItem.CarModel}"></td>
+                <td th:text="${rentalItem.CarNumber}"></td>
+                <td th:text="${rentalItem.FromCity}"></td>
+                <td th:text="${rentalItem.ToCity}"></td>
+                <td th:text="${#dates.format(rentalItem.StartDate, 'dd-MM-yyyy')}"></td>
+                <td th:text="${#dates.format(rentalItem.EndDate, 'dd-MM-yyyy')}"></td>
+                <td th:text="${rentalItem.PricePerDay}"></td>
+                <td>
+                    <button type="submit" name="selectedRowbutton1" th:value="${rentalItem.CarNumber}" th:text="Rent">Rent Car</button>
+                </td>
+                <td>
+                    <button type="submit" name="selectedRowbutton2" th:value="${rentalItem.CarNumber}" th:text="ViewDetails">View Details</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

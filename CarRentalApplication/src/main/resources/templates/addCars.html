@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Car Rental</title>
+      <link rel="stylesheet" href="adflight.css">
+</head>
+<body>
+<h1>Add New Car Rental</h1>
+
+<form method="post" action="/addCarRental">
+    <label for="carModel">Car Model:</label>
+    <input type="text" id="carModel" name="carModel" required>
+
+    <label for="carNumber">Car Number:</label>
+    <input type="text" id="carNumber" name="carNumber" required>
+
+    <label for="rentalFrom">Rental From (City):</label>
+    <input type="text" id="rentalFrom" name="rentalFrom" required>
+
+    <label for="rentalTo">Rental To (City):</label>
+    <input type="text" id="rentalTo" name="rentalTo" required>
+
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" required>
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" required>
+
+    <label for="pricePerDay">Price Per Day:</label>
+    <input type="number" id="pricePerDay" name="pricePerDay" required>
+
+    <button type="submit">Add Car Rental</button>
+</form>
+
+<a href="/viewCarRentals" class="button">Back to View Car Rentals</a>
+</body>
+</html>
